@@ -71,6 +71,8 @@ export function ProposalForm() {
     },
   });
 
+  const formData = form.watch();
+
   const handleTemplateSelect = (templateId: string) => {
     const template = proposalTemplates.find((t) => t.id === templateId);
     if (template) {
@@ -84,8 +86,8 @@ export function ProposalForm() {
 
   const handleRefine = () => {
     startRefinement(async () => {
-      const formData = form.getValues();
-      const result = await refineProposalAction(formData);
+      const currentFormData = form.getValues();
+      const result = await refineProposalAction(currentFormData);
       if (result.error) {
         toast({
           variant: 'destructive',
@@ -105,6 +107,7 @@ export function ProposalForm() {
 
   function onSubmit(data: ProposalFormData) {
     startSubmission(() => {
+      console.log('Proposal submitted:', data);
       toast({
         title: 'Proposal Saved!',
         description: 'Your proposal has been successfully saved as a draft.',
@@ -251,16 +254,16 @@ export function ProposalForm() {
                       <h1 className="font-headline text-4xl">Project Proposal</h1>
                       <Separator className="my-4" />
                       <h2 className="font-headline flex items-center"><Users className="mr-2 h-5 w-5" /> Client Information</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{form.watch('clientInformation')}</pre>
+                      <pre className="whitespace-pre-wrap font-body text-base">{formData.clientInformation}</pre>
                       
                       <h2 className="font-headline flex items-center"><FileText className="mr-2 h-5 w-5" /> Project Scope</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{form.watch('projectScope')}</pre>
+                      <pre className="whitespace-pre-wrap font-body text-base">{formData.projectScope}</pre>
                       
                       <h2 className="font-headline flex items-center"><CircleDollarSign className="mr-2 h-5 w-5" /> Pricing Breakdown</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{form.watch('pricingBreakdown')}</pre>
+                      <pre className="whitespace-pre-wrap font-body text-base">{formData.pricingBreakdown}</pre>
                       
                       <h2 className="font-headline flex items-center"><Clock className="mr-2 h-5 w-5" /> Timelines</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{form.watch('timelines')}</pre>
+                      <pre className="whitespace-pre-wrap font-body text-base">{formData.timelines}</pre>
                     </div>
                   </ScrollArea>
                   <DialogFooter className="no-print">
