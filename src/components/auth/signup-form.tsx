@@ -14,7 +14,7 @@ import { Label } from '@/components/ui/label';
 
 export function SignupForm() {
   return (
-    <Card className="w-full">
+    <Card className="w-full transition-shadow hover:shadow-lg">
       <CardHeader>
         <CardTitle className="font-headline text-2xl">Create an Account</CardTitle>
         <CardDescription>
@@ -36,7 +36,7 @@ export function SignupForm() {
                 <Input id="password" type="password" required />
             </div>
             <Link href="/dashboard" className="w-full">
-                <Button type="submit" className="w-full" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+                <Button type="submit" className="w-full transition-transform hover:scale-105" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
                     Create Account
                 </Button>
             </Link>

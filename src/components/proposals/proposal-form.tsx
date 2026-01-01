@@ -117,32 +117,35 @@ export function ProposalForm() {
     label: string,
     placeholder: string,
     Icon: React.ElementType,
+    delay: number
   ) => (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel className="flex items-center text-lg font-semibold">
-            <Icon className="mr-2 h-5 w-5 text-primary" />
-            {label}
-          </FormLabel>
-          <FormControl>
-            <Textarea
-              placeholder={placeholder}
-              className="min-h-[150px] text-base"
-              {...field}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
+    <div className="animate-fade-in-up" style={{ animationDelay: `${delay}ms`}}>
+      <FormField
+        control={form.control}
+        name={name}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className="flex items-center text-lg font-semibold">
+              <Icon className="mr-2 h-5 w-5 text-primary" />
+              {label}
+            </FormLabel>
+            <FormControl>
+              <Textarea
+                placeholder={placeholder}
+                className="min-h-[150px] text-base"
+                {...field}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </div>
   );
 
   return (
     <>
-      <Card className="mb-8">
+      <Card className="mb-8 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <CardHeader>
           <CardTitle className="font-headline text-xl">Choose a Template</CardTitle>
           <CardDescription>
@@ -150,13 +153,14 @@ export function ProposalForm() {
           </CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PlaceHolderImages.map((image) => {
+          {PlaceHolderImages.map((image, i) => {
              const template = proposalTemplates.find(t => t.id === image.id);
              return (
               <div
                 key={image.id}
                 onClick={() => handleTemplateSelect(image.id)}
-                className="group cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-xl"
+                className="group cursor-pointer overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary hover:shadow-xl hover:-translate-y-1 animate-fade-in-up"
+                style={{ animationDelay: `${400 + i * 100}ms` }}
               >
                 <div className="relative h-40 w-full">
                   <Image
@@ -166,11 +170,10 @@ export function ProposalForm() {
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/40" />
-                </div>
-                <div className="bg-card p-4">
-                  <h3 className="font-headline font-semibold">{template?.name}</h3>
-                  <p className="text-sm text-muted-foreground">{template?.description}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                   <div className="absolute bottom-0 left-0 p-4">
+                    <h3 className="font-headline font-semibold text-white">{template?.name}</h3>
+                  </div>
                 </div>
               </div>
              )
@@ -187,34 +190,39 @@ export function ProposalForm() {
                 'Client Information',
                 'Who is this proposal for? e.g., Client Name, Contact Person, etc.',
                 Users,
+                500
               )}
               {renderSection(
                 'projectScope',
                 'Project Scope',
                 'What are the project goals, deliverables, and boundaries?',
                 FileText,
+                600
               )}
               {renderSection(
                 'pricingBreakdown',
                 'Pricing Breakdown',
                 'Detail the costs, including phases, services, and total investment.',
                 CircleDollarSign,
+                700
               )}
               {renderSection(
                 'timelines',
                 'Timelines',
                 'What are the estimated start dates, milestones, and completion dates?',
                 Clock,
+                800
               )}
             </CardContent>
           </Card>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-end animate-fade-in-up" style={{ animationDelay: '900ms' }}>
             <Button
               type="button"
               variant="outline"
               onClick={handleRefine}
               disabled={isRefining}
+              className="transition-transform hover:scale-105"
             >
               {isRefining ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -226,7 +234,7 @@ export function ProposalForm() {
             
             <Dialog>
               <DialogTrigger asChild>
-                <Button type="button" variant="outline">
+                <Button type="button" variant="outline" className="transition-transform hover:scale-105">
                   <Eye className="mr-2 h-4 w-4" />
                   Preview
                 </Button>
@@ -256,14 +264,14 @@ export function ProposalForm() {
                     </div>
                   </ScrollArea>
                   <DialogFooter className="no-print">
-                      <Button onClick={handlePrint} variant="outline">
+                      <Button onClick={handlePrint} variant="outline" className="transition-transform hover:scale-105">
                           <Download className="mr-2 h-4 w-4" /> Download as PDF
                       </Button>
                   </DialogFooter>
               </DialogContent>
             </Dialog>
 
-            <Button type="submit" disabled={isSubmitting} style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+            <Button type="submit" disabled={isSubmitting} style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }} className="transition-transform hover:scale-105">
               {isSubmitting ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (

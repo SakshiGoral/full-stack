@@ -6,7 +6,7 @@ import { mockProposals } from '@/lib/data';
 import { PlusCircle, ArrowRight } from 'lucide-react';
 import type { Proposal } from '@/lib/types';
 
-const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'destructive'> = {
+const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'destructive' | 'outline'> = {
   'Accepted': 'default',
   'Sent': 'secondary',
   'Draft': 'outline',
@@ -14,7 +14,7 @@ const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'de
 
 export default function DashboardPage() {
   return (
-    <div className="container mx-auto px-4 py-8 md:px-6 md:py-12">
+    <div className="container mx-auto px-4 py-8 md:px-6 md:py-12 animate-fade-in">
       <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="font-headline text-3xl font-bold tracking-tight md:text-4xl">
@@ -25,7 +25,7 @@ export default function DashboardPage() {
           </p>
         </div>
         <Link href="/proposals/new">
-          <Button size="lg" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+          <Button size="lg" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }} className="transition-transform hover:scale-105">
             <PlusCircle className="mr-2 h-5 w-5" />
             Create New Proposal
           </Button>
@@ -33,8 +33,12 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {mockProposals.map((proposal) => (
-          <Card key={proposal.id} className="flex flex-col transition-all hover:shadow-lg">
+        {mockProposals.map((proposal, i) => (
+          <Card 
+            key={proposal.id} 
+            className="flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 animate-fade-in-up"
+            style={{ animationDelay: `${i * 100}ms` }}
+          >
             <CardHeader>
               <div className="flex items-start justify-between">
                 <CardTitle className="text-lg font-semibold">{proposal.title}</CardTitle>
@@ -48,7 +52,7 @@ export default function DashboardPage() {
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full transition-colors hover:bg-accent/80">
                 View Details <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>
