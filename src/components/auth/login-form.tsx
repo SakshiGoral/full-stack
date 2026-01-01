@@ -14,7 +14,7 @@ import { Label } from '@/components/ui/label';
 
 export function LoginForm() {
   return (
-    <Card className="w-full transition-shadow hover:shadow-lg">
+    <Card className="w-full transition-shadow hover:shadow-lg bg-card/80 backdrop-blur-sm border-border/20">
       <CardHeader>
         <CardTitle className="font-headline text-2xl">Welcome Back</CardTitle>
         <CardDescription>
@@ -22,22 +22,20 @@ export function LoginForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" required />
+        <form className="space-y-6">
+          <div className="space-y-2 floating-label-group">
+            <Input id="email" type="email" placeholder=" " required />
+            <Label htmlFor="email" className="floating-label">Email</Label>
           </div>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <Label htmlFor="password">Password</Label>
-              <Link href="#" className="ml-auto inline-block text-sm underline">
-                Forgot your password?
+          <div className="space-y-2 floating-label-group">
+             <Input id="password" type="password" placeholder=" " required />
+            <Label htmlFor="password">Password</Label>
+             <Link href="#" className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-primary hover:underline">
+                Forgot?
               </Link>
-            </div>
-            <Input id="password" type="password" required />
           </div>
           <Link href="/dashboard" className="w-full">
-            <Button type="submit" className="w-full bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90">
+            <Button type="submit" className="w-full bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90 btn-shine">
               Login
             </Button>
           </Link>
