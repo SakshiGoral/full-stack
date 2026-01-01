@@ -1,0 +1,48 @@
+import type { Proposal } from './types';
+
+export const mockProposals: Proposal[] = [
+  {
+    id: 'prop_1',
+    title: 'E-commerce Platform Development',
+    clientName: 'Global Imports Inc.',
+    status: 'Sent',
+    createdAt: '2023-10-26',
+    clientInformation: 'Client: Global Imports Inc.\nContact: Jane Doe',
+    projectScope: 'Develop a full-featured e-commerce platform with Shopify integration.',
+    pricingBreakdown: 'Phase 1: $10,000\nPhase 2: $15,000',
+    timelines: '8-12 weeks',
+  },
+  {
+    id: 'prop_2',
+    title: 'Mobile App for Food Delivery',
+    clientName: 'QuickBites',
+    status: 'Draft',
+    createdAt: '2023-11-05',
+    clientInformation: 'Client: QuickBites\nContact: John Smith',
+    projectScope: 'Native iOS and Android app for food ordering and delivery.',
+    pricingBreakdown: 'Design: $8,000\nDevelopment: $25,000\nBackend: $12,000',
+    timelines: '16 weeks',
+  },
+  {
+    id: 'prop_3',
+    title: 'Corporate Website Redesign',
+    clientName: 'Innovate Corp',
+    status: 'Accepted',
+    createdAt: '2023-09-15',
+    clientInformation: 'Client: Innovate Corp\nContact: Emily White',
+    projectScope: 'Redesign of the main corporate website with a new CMS.',
+    pricingBreakdown: 'Total Project Cost: $18,000',
+    timelines: '6 weeks',
+  },
+  {
+    id: 'prop_4',
+    title: 'SEO & Content Strategy',
+    clientName: 'HealthyLiving Blog',
+    status: 'Draft',
+    createdAt: '2023-11-10',
+    clientInformation: 'Client: HealthyLiving Blog\nContact: Mike Green',
+    projectScope: 'Monthly SEO audit and content creation retainer.',
+    pricingBreakdown: 'Monthly Retainer: $2,500',
+    timelines: 'Ongoing',
+  },
+];
