@@ -1,10 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { mockProposals } from '@/lib/data';
-import { PlusCircle, ArrowRight } from 'lucide-react';
+import { PlusCircle, ArrowRight, PartyPopper } from 'lucide-react';
 import type { Proposal } from '@/lib/types';
+import { useToast } from '@/hooks/use-toast';
 
 const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'destructive' | 'outline'> = {
   'Accepted': 'default',
@@ -13,6 +17,16 @@ const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'de
 };
 
 export default function DashboardPage() {
+  const { toast } = useToast();
+
+  useEffect(() => {
+    toast({
+      title: 'Welcome back!',
+      description: 'You have successfully logged in.',
+      action: <PartyPopper className="h-6 w-6 text-primary" />,
+    });
+  }, [toast]);
+
   return (
     <div className="container mx-auto px-4 py-8 md:px-6 md:py-12 animate-fade-in">
       <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
@@ -25,7 +39,7 @@ export default function DashboardPage() {
           </p>
         </div>
         <Link href="/proposals/new">
-          <Button size="lg" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }} className="transition-transform hover:scale-105">
+          <Button size="lg" className="bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90">
             <PlusCircle className="mr-2 h-5 w-5" />
             Create New Proposal
           </Button>
@@ -52,7 +66,7 @@ export default function DashboardPage() {
               </p>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="w-full transition-colors hover:bg-accent/80">
+              <Button variant="outline" className="w-full transition-colors hover:bg-secondary">
                 View Details <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </CardFooter>

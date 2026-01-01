@@ -36,7 +36,7 @@ export function SignupForm() {
                 <Input id="password" type="password" required />
             </div>
             <Link href="/dashboard" className="w-full">
-                <Button type="submit" className="w-full transition-transform hover:scale-105" style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }}>
+                <Button type="submit" className="w-full bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90">
                     Create Account
                 </Button>
             </Link>

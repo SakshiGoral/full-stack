@@ -271,7 +271,7 @@ export function ProposalForm() {
               </DialogContent>
             </Dialog>
 
-            <Button type="submit" disabled={isSubmitting} style={{ backgroundColor: 'hsl(var(--accent))', color: 'hsl(var(--accent-foreground))' }} className="transition-transform hover:scale-105">
+            <Button type="submit" disabled={isSubmitting} className="bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90">
               {isSubmitting ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
