@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -15,6 +15,16 @@ const statusVariantMap: Record<Proposal['status'], 'default' | 'secondary' | 'de
   'Sent': 'secondary',
   'Draft': 'outline',
 };
+
+const ClientSideDate = ({ dateString }: { dateString: string }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return isClient ? new Date(dateString).toLocaleDateString() : '...';
+}
 
 export default function DashboardPage() {
   const { toast } = useToast();
@@ -62,7 +72,7 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="flex-grow">
               <p className="text-sm text-muted-foreground">
-                Created on: {new Date(proposal.createdAt).toLocaleDateString()}
+                Created on: <ClientSideDate dateString={proposal.createdAt} />
               </p>
             </CardContent>
             <CardFooter>
