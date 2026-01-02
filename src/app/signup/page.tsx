@@ -4,7 +4,7 @@ import Logo from '@/components/logo';
 
 export default function SignupPage() {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background p-4 sm:p-6 md:p-8">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-secondary p-4 sm:p-6 md:p-8">
       <div className="absolute top-0 right-0 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 left-0 translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl animate-pulse-slow animation-delay-300" />
       <div className="w-full max-w-md z-10">

@@ -249,32 +249,34 @@ export function ProposalForm() {
                     <DialogDescription>This is how your proposal will look to the client.</DialogDescription>
                   </DialogHeader>
                  </div>
-                 <ScrollArea className="h-[70vh] p-6">
+                 <ScrollArea className="h-[70vh] p-6 bg-secondary/30 rounded-lg">
                     <div className="prose dark:prose-invert max-w-none">
-                      <h1 className="font-headline text-4xl">Project Proposal</h1>
-                      <Separator className="my-4" />
-                      <h2 className="font-headline flex items-center"><Users className="mr-2 h-5 w-5" /> Client Information</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{formData.clientInformation}</pre>
-                      
-                      <h2 className="font-headline flex items-center"><FileText className="mr-2 h-5 w-5" /> Project Scope</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{formData.projectScope}</pre>
-                      
-                      <h2 className="font-headline flex items-center"><CircleDollarSign className="mr-2 h-5 w-5" /> Pricing Breakdown</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{formData.pricingBreakdown}</pre>
-                      
-                      <h2 className="font-headline flex items-center"><Clock className="mr-2 h-5 w-5" /> Timelines</h2>
-                      <pre className="whitespace-pre-wrap font-body text-base">{formData.timelines}</pre>
+                      <div className="p-8 glass-card">
+                        <h1 className="font-headline text-4xl">Project Proposal</h1>
+                        <Separator className="my-4" />
+                        <h2 className="font-headline flex items-center"><Users className="mr-2 h-5 w-5" /> Client Information</h2>
+                        <pre className="whitespace-pre-wrap font-body text-base bg-transparent p-4 rounded-md border border-border/20">{formData.clientInformation}</pre>
+                        
+                        <h2 className="font-headline flex items-center"><FileText className="mr-2 h-5 w-5" /> Project Scope</h2>
+                        <pre className="whitespace-pre-wrap font-body text-base bg-transparent p-4 rounded-md border border-border/20">{formData.projectScope}</pre>
+                        
+                        <h2 className="font-headline flex items-center"><CircleDollarSign className="mr-2 h-5 w-5" /> Pricing Breakdown</h2>
+                        <pre className="whitespace-pre-wrap font-body text-base bg-transparent p-4 rounded-md border border-border/20">{formData.pricingBreakdown}</pre>
+                        
+                        <h2 className="font-headline flex items-center"><Clock className="mr-2 h-5 w-5" /> Timelines</h2>
+                        <pre className="whitespace-pre-wrap font-body text-base bg-transparent p-4 rounded-md border border-border/20">{formData.timelines}</pre>
+                      </div>
                     </div>
                   </ScrollArea>
                   <DialogFooter className="no-print">
-                      <Button onClick={handlePrint} variant="outline" className="transition-transform hover:scale-105">
+                      <Button onClick={handlePrint} variant="outline" className="transition-transform hover:scale-105 btn-shine">
                           <Download className="mr-2 h-4 w-4" /> Download as PDF
                       </Button>
                   </DialogFooter>
               </DialogContent>
             </Dialog>
 
-            <Button type="submit" disabled={isSubmitting} className="bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90">
+            <Button type="submit" disabled={isSubmitting} className="bg-primary text-primary-foreground transition-transform hover:scale-105 hover:bg-primary/90 btn-shine">
               {isSubmitting ? (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               ) : (
@@ -290,7 +292,7 @@ export function ProposalForm() {
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle className="font-headline flex items-center text-2xl">
-              <Sparkles className="mr-2 h-5 w-5 text-accent" />
+              <Sparkles className="mr-2 h-5 w-5 text-primary" />
               AI Refinement Suggestions
             </DialogTitle>
             <DialogDescription>

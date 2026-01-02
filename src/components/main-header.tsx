@@ -20,7 +20,7 @@ export default function MainHeader() {
         </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Avatar className="h-9 w-9 cursor-pointer">
+            <Avatar className="h-9 w-9 cursor-pointer transition-transform hover:scale-110">
               <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="User" />
               <AvatarFallback>
                 <User />
